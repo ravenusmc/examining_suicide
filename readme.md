@@ -7,7 +7,9 @@ for the dataset, is below:
 
 https://www.kaggle.com/szamil/who-suicide-statistics
 
-As usual, the dataset comes from Kaggle.
+As usual, the dataset comes from Kaggle. Furthermore, the guide at testdriven.io
+helped me at times throughout this project since this is really my first project
+working with both flask and Vue together. 
 
 
 # Getting started
@@ -38,4 +40,4 @@ Further directions will be available at another date.
 
 To see a video that talks about this project please go here: COMING SOON
 
-Blog entry: COMING SOON 
+Blog entry: COMING SOON
