@@ -2,7 +2,7 @@
   <div>
     <header>
       <div class='title_div'>
-        <h1>Learning About Suicide</h1>
+        <h1 class="font_color">Learning About Suicide</h1>
       </div>
     </header>
   </div>
@@ -14,7 +14,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 header {
   display: flex;
   flex-direction: column;
@@ -32,5 +32,9 @@ header {
   border: 2px solid white;
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+.font_color {
+  color: white;
 }
 </style>
