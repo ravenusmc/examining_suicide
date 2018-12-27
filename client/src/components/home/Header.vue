@@ -20,7 +20,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 700px;
   background-image: url('../../assets/images/cliff.jpg');
   background-size: cover;
   background-position: center;
