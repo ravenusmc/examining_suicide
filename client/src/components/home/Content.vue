@@ -1,15 +1,15 @@
 <template>
   <div>
 
-    <div :style="{backgroundImage:'url(' + require('../../assets/images/water.jpg') + ')' }" class='main_content_div'>
+    <div :style="{backgroundImage:imageOne}" class='main_content_div'>
 
       <div @mouseover="changeImageOne" class='div_one'>
       </div>
 
-      <div class='div_two'>
+      <div @mouseover="changeImageTwo" class='div_two'>
       </div>
 
-      <div class='div_three'>
+      <div @mouseover="changeImageThree" class='div_three'>
       </div>
 
     </div>
@@ -20,10 +20,22 @@
 <script>
 export default {
   name: 'Content',
-  data: {},
+  data() {
+    return {
+      imageOne: 'url(' + require('../../assets/images/water.jpg') + ')',
+      imageTwo: 'url(' + require('../../assets/images/rope.jpg') + ')',
+      imageThree: 'url(' + require('../../assets/images/window.jpg') + ')',
+    }
+  },
   methods: {
     changeImageOne() {
-      alert('Hi');
+      this.imageOne = 'url(' + require('../../assets/images/rope.jpg') + ')'
+    },
+    changeImageTwo(){
+      this.imageOne = 'url(' + require('../../assets/images/window.jpg') + ')'
+    },
+    changeImageThree(){
+      this.imageOne = 'url(' + require('../../assets/images/water.jpg') + ')'
     },
   },
 };
@@ -41,14 +53,14 @@ export default {
 }
 
 .div_one {
-  border: 2px solid yellow;
+  border-right: 2px dotted white;
 }
 
 .div_two {
-  border: 2px solid red;
+  border-right: 2px dotted white;
 }
 
 .div_three {
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
 }
 </style>

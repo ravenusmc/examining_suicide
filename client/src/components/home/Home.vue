@@ -3,6 +3,7 @@
     <Header></Header>
     <hr>
     <Content></Content>
+    <hr>
   </div>
 </template>
 
