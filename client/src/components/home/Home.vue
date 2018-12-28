@@ -14,7 +14,7 @@ export default {
   name: 'Home',
   components: {
     Header,
-    Content
+    Content,
   },
 };
 </script>
