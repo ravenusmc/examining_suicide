@@ -1,7 +1,7 @@
 <template>
   <div class='main_div'>
     <button>Quick Facts Page</button>
-    <button>Graph Page</button>
+    <button><router-link class="nav-link" to="/graph">Graph Page</router-link></button>
   </div>
 </template>
 
