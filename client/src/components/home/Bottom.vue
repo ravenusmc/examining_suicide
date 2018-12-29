@@ -1,7 +1,7 @@
 <template>
   <div class='main_div'>
-    <button>Quick Facts Page</button>
-    <button><router-link class="nav-link" to="/graph">Graph Page</router-link></button>
+    <button><router-link class='font_color' to="/fact">Quick Facts Page</router-link></button>
+    <button><router-link class='font_color' to="/graph">Graph Page</router-link></button>
   </div>
 </template>
 
@@ -19,6 +19,14 @@ export default {
   align-items: center;
   height: 300px;
   border: 2px solid black;
+}
+
+.font_color {
+  color: #f2f2f2;
+}
+
+.font_color:hover {
+  color: #3a7999;
 }
 
 button {

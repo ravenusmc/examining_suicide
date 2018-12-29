@@ -25,9 +25,9 @@ export default new Router({
       component: Graph,
     },
     {
-      path: '/graph',
-      name: 'Graph',
-      component: Graph,
+      path: '/fact',
+      name: 'Fact',
+      component: Fact,
     },
   ],
   mode: 'history',
