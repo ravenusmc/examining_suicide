@@ -2,7 +2,7 @@
   <div>
     <header>
       <div class='title_div'>
-        <h1 class="font_color">Learning About Suicide</h1>
+        <h1 class="font_color font">Learning About Suicide</h1>
       </div>
     </header>
   </div>
@@ -15,6 +15,10 @@ export default {
 </script>
 
 <style scoped>
+.font {
+  font-family: 'Thasadith', sans-serif;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -31,7 +35,7 @@ header {
   padding: 15px;
   border: 2px solid white;
   border-radius: 12px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .font_color {
