@@ -9,14 +9,66 @@
     </p>
 
     <p>Data Area 1: </p>
+    <form @submit="onSubmit">
+      <input
+                   type="text"
+                   v-model="country"
+                   required
+                   placeholder="Enter Country"></b-form-input>
+      <button type="submit" variant="primary">Submit</button>
+      <p>{{ msg }}</p>
+    </form>
+    <button type="button" @click="getMessage" class="btn btn-primary">Press Me</button>
+
 
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'Content',
+  data() {
+    return {
+      msg: '',
+      country: '',
+    }
+  },
+  methods: {
+  getMessage() {
+    const path = 'http://localhost:5000/suicides_by_country';
+    axios.get(path)
+      .then((res) => {
+        this.msg = res.data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+  getSuicideByCountry(payload) {
+  const path = 'http://localhost:5000/suicides_by_country';
+  axios.post(path, payload)
+      // .then(() => {
+      //     this.getMessage();
+      // })
+      .then((res) => {
+        this.msg = res.data;
+      })
+      .catch((error) => {
+          console.log(error);
+          this.getMessage();
+      });
+    },
+    onSubmit(evt) {
+      evt.preventDefault();
+      const payload = {
+        country: this.country
+      };
+      this.getSuicideByCountry(payload);
+    },
+  },
 };
+
 </script>
 
 <style scoped>

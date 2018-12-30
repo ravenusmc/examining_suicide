@@ -9,8 +9,14 @@ class Data():
     def __init__(self):
         self.data = pd.read_csv('./data/who_suicide_statistics.csv')
 
-    def test(self):
-        print(self.data.head())
+    #This method will get the suicides by year for each country
+    def suicides_by_country(self):
+        #Getting the data set to match a specific country.
+        self.data = self.data[self.data.country == 'United States of America']
+        #Getting the total number of suicides
+        Total = self.data['suicides_no'].sum()
+        #returning the total
+        return Total
 
 test = Data()
-test.test()
+test.suicides_by_country()
