@@ -6,7 +6,8 @@
 
     <div>
       <h3 class='font center'>Suicides by Country and Year</h3>
-      
+      <p>If a value of zero is returned it means there is no data during that year</p>
+
       <div class='fix_alignment'>
         <form @submit="onSubmit">
           <select v-model="country" name="country">
@@ -17,6 +18,27 @@
             required
             placeholder="Enter Year"></b-form-input>
           <button type="submit" variant="primary">Submit</button>
+          <p class='font'>The number of suicides in {{ country }} is: {{ msg }}</p>
+        </form>
+      </div>
+
+      <h3 class='font center'>Suicides by Country and Sex</h3>
+      <p>If a value of zero is returned it means there is no data during that year</p>
+
+      <div class='fix_alignment'>
+        <form @submit="onSubmit2">
+
+          <select v-model="country" name="country">
+            <option v-for="country in countries" :value="country">{{country}}</option>
+          </select>
+
+          <div class='radio_sex_alignment'>
+            <input type="radio" name="gender" value="male" v-model="sex">Male <br>
+            <input type="radio" name="gender" value="female" v-model="sex"> Female<br>
+          </div>
+
+          <button type="submit" variant="primary">Submit</button>
+
           <p class='font'>The number of suicides in {{ country }} is: {{ msg }}</p>
         </form>
       </div>
@@ -34,6 +56,7 @@ export default {
     return {
       msg: '',
       country: '',
+      sex: '',
       year: '',
       countries: ['Albania', 'Anguilla', 'Antigua and Barbuda', 'Argentina', 'Armenia',
         'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain',
@@ -84,6 +107,24 @@ export default {
             console.log(error);
         });
     },
+    onSubmit2(evt) {
+      evt.preventDefault();
+      const payload = {
+        country: this.country,
+        sex: this.sex
+      };
+      this.getSuicideByCountrySex(payload);
+    },
+    getSuicideByCountrySex(payload) {
+    const path = 'http://localhost:5000/suicides_by_country_sex';
+    axios.post(path, payload)
+        .then((res) => {
+          this.msg = res.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    },
   },
 };
 </script>
@@ -110,6 +151,11 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.radio_sex_alignment {
+  display: flex;
+  flex-direction: row;
 }
 
 button {

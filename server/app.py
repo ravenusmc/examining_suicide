@@ -26,6 +26,7 @@ def route_one():
     Total = 'TEST'
     return jsonify(Total)
 
+#This route will get the number of suicides based on country and year
 @app.route('/suicides_by_country_year', methods=['GET', 'POST'])
 def route_two():
     data = Data()
@@ -34,6 +35,22 @@ def route_two():
         country = post_data.get('country')
         year = int(post_data.get('year'))
         Total = data.suicides_by_country_year(country, year)
+        return jsonify(Total)
+    Total = 'TEST'
+    return jsonify(Total)
+
+#This route will get the number of suicides based on country and sex
+@app.route('/suicides_by_country_sex', methods=['GET', 'POST'])
+def route_three():
+    data = Data()
+    if request.method == 'POST':
+        post_data = request.get_json()
+        country = post_data.get('country')
+        year = post_data.get('sex')
+        print(country)
+        print(year)
+        Total = 'YAYA'
+        #Total = data.suicides_by_country_year(country, year)
         return jsonify(Total)
     Total = 'TEST'
     return jsonify(Total)
