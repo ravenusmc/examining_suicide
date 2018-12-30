@@ -14,11 +14,6 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app)
 
-# sanity check route
-@app.route('/ping', methods=['GET'])
-def ping_pong():
-    return jsonify('pong!')
-
 #Getting the number of suicides by country
 @app.route('/suicides_by_country', methods=['GET', 'POST'])
 def route_one():
@@ -27,6 +22,18 @@ def route_one():
         post_data = request.get_json()
         country = post_data.get('country')
         Total = data.suicides_by_country(country)
+        return jsonify(Total)
+    Total = 'TEST'
+    return jsonify(Total)
+
+@app.route('/suicides_by_country_year', methods=['GET', 'POST'])
+def route_two():
+    data = Data()
+    if request.method == 'POST':
+        post_data = request.get_json()
+        country = post_data.get('country')
+        year = int(post_data.get('year'))
+        Total = data.suicides_by_country_year(country, year)
         return jsonify(Total)
     Total = 'TEST'
     return jsonify(Total)

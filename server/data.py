@@ -18,5 +18,10 @@ class Data():
         #returning the total
         return Total
 
-# test = Data()
-# test.suicides_by_country()
+    def suicides_by_country_year(self, country, year):
+        self.data = self.data[(self.data.country == country) & (self.data.year == year)]
+        Total = self.data['suicides_no'].sum()
+        return Total
+
+# play = Data()
+# play.suicides_by_country_year()

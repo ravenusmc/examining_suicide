@@ -19,15 +19,17 @@
           a country over to the right and when you submit it, the number of suicides
           that occured in that country will come back. I will say thought that the
           WHO data does not all start at the same year. I know that Albania's starts
-          in 1985 while the U.S's data starts in 1979. 
+          in 1985 while the U.S's data starts in 1979.
         </p>
       </div>
 
-      <ByCountry></ByCountry>
-
+      <div class='by_country'>
+        <ByCountry></ByCountry>
+      </div>
+      
     </section>
 
-
+    <SectionTwo></SectionTwo>
 
   </div>
 </template>
@@ -35,6 +37,7 @@
 <script>
 
 import ByCountry from './Calls/By_Country';
+import SectionTwo from './Calls/Section_Two';
 
 export default {
   name: 'Content',
@@ -42,10 +45,12 @@ export default {
     return {
       msg: '',
       country: '',
+
     }
   },
   components: {
-    ByCountry
+    ByCountry,
+    SectionTwo,
   },
 
 };
@@ -66,10 +71,24 @@ export default {
   margin-top: 25px;
   margin-left: 5%;
   margin-right: 5%;
-  border: 2px solid black;
 }
 
+/* CSS for section one */
 .section_one {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
+}
+
+.by_country {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CSS for section two */
+.section_two {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2em;
