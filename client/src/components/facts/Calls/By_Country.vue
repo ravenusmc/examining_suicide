@@ -8,7 +8,7 @@
              required
              placeholder="Enter Country"></b-form-input>
       <button type="submit" variant="primary">Submit</button>
-      <p>There are {{ msg }} suicides in {{ country }}</p>
+      <p>The number of suicides in {{ country }} is: {{ msg }}</p>
     </form>
 
   </div>
@@ -28,9 +28,6 @@ export default {
     getSuicideByCountry(payload) {
     const path = 'http://localhost:5000/suicides_by_country';
     axios.post(path, payload)
-        // .then(() => {
-        //     this.getMessage();
-        // })
         .then((res) => {
           this.msg = res.data;
         })

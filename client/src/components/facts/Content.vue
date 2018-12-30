@@ -1,16 +1,33 @@
 <template>
   <div class='content_area'>
 
-    <div>
-      <p>This page is about letting the user look at some of the data statistics
-        such as find the mean in some data or some other basic statistics. Yes,
-        compared to the graph page, this page me be quite boring. So, if you want
-        to see some excitement head on over to the graph page. Other than that,
-        I'll put some photo's on this page to help liven it up.
-      </p>
-    </div>
+    <h1 class='font center'>Examining The Data</h1>
 
-    <ByCountry></ByCountry>
+    <section class='section_one'>
+
+      <div>
+        <p class='font'>
+          This page is about letting the user look at some of the data statistics
+          such as find the mean in some data or some other basic statistics. Yes,
+          compared to the graph page, this page me be quite boring. So, if you want
+          to see some excitement head on over to the graph page. Other than that,
+          I'll put some photo's on this page to help liven it up.
+        </p>
+
+        <p class='font'>
+          The first data that we can look at is suicide by country. Simply choose
+          a country over to the right and when you submit it, the number of suicides
+          that occured in that country will come back. I will say thought that the
+          WHO data does not all start at the same year. I know that Albania's starts
+          in 1985 while the U.S's data starts in 1979. 
+        </p>
+      </div>
+
+      <ByCountry></ByCountry>
+
+    </section>
+
+
 
   </div>
 </template>
@@ -37,10 +54,25 @@ export default {
 
 <style scoped>
 
+.center {
+  text-align: center;
+}
+
+.font {
+  font-family: 'Thasadith', sans-serif;
+}
+
 .content_area {
+  margin-top: 25px;
   margin-left: 5%;
   margin-right: 5%;
   border: 2px solid black;
+}
+
+.section_one {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
 }
 
 </style>
