@@ -10,13 +10,13 @@ class Data():
         self.data = pd.read_csv('./data/who_suicide_statistics.csv')
 
     #This method will get the suicides by year for each country
-    def suicides_by_country(self):
+    def suicides_by_country(self, country):
         #Getting the data set to match a specific country.
-        self.data = self.data[self.data.country == 'United States of America']
+        self.data = self.data[self.data.country == country]
         #Getting the total number of suicides
         Total = self.data['suicides_no'].sum()
         #returning the total
         return Total
 
-test = Data()
-test.suicides_by_country()
+# test = Data()
+# test.suicides_by_country()

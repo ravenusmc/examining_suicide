@@ -1,13 +1,53 @@
 <template>
   <div>
-    <h1>test</h1>
+
+    <h3>Suicides by Country</h3>
+    <form @submit="onSubmit">
+      <input type="text"
+             v-model="country"
+             required
+             placeholder="Enter Country"></b-form-input>
+      <button type="submit" variant="primary">Submit</button>
+      <p>There are {{ msg }} suicides in {{ country }}</p>
+    </form>
+
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-  name: 'ByCountry'
-}
+  name: 'ByCountry',
+  data() {
+    return {
+      msg: '',
+      country: '',
+    }
+  },
+  methods: {
+    getSuicideByCountry(payload) {
+    const path = 'http://localhost:5000/suicides_by_country';
+    axios.post(path, payload)
+        // .then(() => {
+        //     this.getMessage();
+        // })
+        .then((res) => {
+          this.msg = res.data;
+        })
+        .catch((error) => {
+            console.log(error);
+            this.getMessage();
+        });
+      },
+      onSubmit(evt) {
+        evt.preventDefault();
+        const payload = {
+          country: this.country
+        };
+        this.getSuicideByCountry(payload);
+      },
+    },
+  }
 </script>
 
 <style>

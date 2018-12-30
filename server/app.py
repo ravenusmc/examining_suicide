@@ -26,9 +26,8 @@ def route_one():
     if request.method == 'POST':
         post_data = request.get_json()
         country = post_data.get('country')
-        Total = country
+        Total = data.suicides_by_country(country)
         return jsonify(Total)
-        # Total = data.suicides_by_country()
     Total = 'TEST'
     return jsonify(Total)
 
