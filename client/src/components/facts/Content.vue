@@ -9,6 +9,7 @@
     </p>
 
     <p>Data Area 1: </p>
+    <ByCountry></ByCountry>
     <form @submit="onSubmit">
       <input
                    type="text"
@@ -26,6 +27,8 @@
 
 <script>
 import axios from 'axios';
+import ByCountry from './Calls/By_Country';
+
 export default {
   name: 'Content',
   data() {
@@ -33,6 +36,9 @@ export default {
       msg: '',
       country: '',
     }
+  },
+  components: {
+    ByCountry
   },
   methods: {
   getMessage() {
