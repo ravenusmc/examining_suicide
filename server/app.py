@@ -46,11 +46,22 @@ def route_three():
     if request.method == 'POST':
         post_data = request.get_json()
         country = post_data.get('country')
-        year = post_data.get('sex')
-        print(country)
-        print(year)
-        Total = 'YAYA'
-        #Total = data.suicides_by_country_year(country, year)
+        sex = post_data.get('sex')
+        Total = data.suicides_by_country_sex(country, sex)
+        return jsonify(Total)
+    Total = 'TEST'
+    return jsonify(Total)
+
+#This route will get the number of suicides based on country and sex
+@app.route('/suicides_by_country_sex_year', methods=['GET', 'POST'])
+def route_four():
+    data = Data()
+    if request.method == 'POST':
+        post_data = request.get_json()
+        country = post_data.get('country')
+        sex = post_data.get('sex')
+        year = post_data.get('year')
+        Total = data.suicides_by_country_sex_year(country, sex, year)
         return jsonify(Total)
     Total = 'TEST'
     return jsonify(Total)

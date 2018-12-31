@@ -4,9 +4,10 @@
     <div class='image_area'>
     </div>
 
+    <!-- Start of suicides by country and sex area -->
     <div>
       <h3 class='font center'>Suicides by Country and Year</h3>
-      <p>If a value of zero is returned it means there is no data during that year</p>
+      <p class='font center'>If a value of zero is returned it means there is no data during that year</p>
 
       <div class='fix_alignment'>
         <form @submit="onSubmit">
@@ -21,9 +22,11 @@
           <p class='font'>The number of suicides in {{ country }} is: {{ msg }}</p>
         </form>
       </div>
+      <!-- End of suicides by country and year area -->
 
+      <!-- start of suicides by country and sex area -->
       <h3 class='font center'>Suicides by Country and Sex</h3>
-      <p>If a value of zero is returned it means there is no data during that year</p>
+      <p class='font center'>If a value of zero is returned it means there is no data during that year</p>
 
       <div class='fix_alignment'>
         <form @submit="onSubmit2">
@@ -42,6 +45,35 @@
           <p class='font'>The number of suicides in {{ country }} is: {{ msg }}</p>
         </form>
       </div>
+      <!-- End of suicides by country and sex area -->
+
+      <!-- start of suicides by country, sex and year area -->
+      <h3 class='font center'>Suicides by Country, Sex and Year</h3>
+      <p class='font center'>If a value of zero is returned it means there is no data during that year</p>
+
+      <div class='fix_alignment'>
+        <form @submit="onSubmit3">
+
+          <select v-model="country" name="country">
+            <option v-for="country in countries" :value="country">{{country}}</option>
+          </select>
+
+          <div class='radio_sex_alignment'>
+            <input type="radio" name="gender" value="male" v-model="sex">Male <br>
+            <input type="radio" name="gender" value="female" v-model="sex"> Female<br>
+          </div>
+
+          <input type="number"
+            v-model="year"
+            required
+            placeholder="Enter Year"></b-form-input>
+
+          <button type="submit" variant="primary">Submit</button>
+
+          <p class='font'>The number of suicides in {{ country }} is: {{ msg }}</p>
+        </form>
+      </div>
+      <!-- End of suicides by country, sex and year area -->
 
     </div>
 
@@ -125,6 +157,25 @@ export default {
             console.log(error);
         });
     },
+    onSubmit3(evt) {
+      evt.preventDefault();
+      const payload = {
+        country: this.country,
+        sex: this.sex,
+        year: this.year,
+      };
+      this.getSuicideByCountrySex(payload);
+    },
+    getSuicideByCountrySexYear(payload) {
+    const path = 'http://localhost:5000/suicides_by_country_sex_year';
+    axios.post(path, payload)
+        .then((res) => {
+          this.msg = res.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
   },
 };
 </script>
