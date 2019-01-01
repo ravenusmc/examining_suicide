@@ -109,6 +109,7 @@ export default {
 
 .font {
   font-family: 'Thasadith', sans-serif;
+  font-size: 20px;
 }
 
 .age_div {
