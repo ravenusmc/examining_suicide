@@ -13,7 +13,7 @@ export default {
   name: 'Fact',
   components: {
     Header,
-    Content
+    Content,
   }
 };
 </script>

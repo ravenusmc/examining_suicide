@@ -13,36 +13,21 @@
         <div>
           <h4 class='center'>Combined</h4>
           <ul>
-            <li>5-14: </li>
-            <li>15-24: </li>
-            <li>25-34: </li>
-            <li>35-54: </li>
-            <li>55-74: </li>
-            <li>75+: </li>
+            <li v-for="(num,index) in combined"><span>{{ age_groups[index] }}:</span>  {{num}} Suicides</li>
           </ul>
         </div>
 
         <div>
           <h4 class='center'>Male</h4>
           <ul>
-            <li>5-14: </li>
-            <li>15-24: </li>
-            <li>25-34: </li>
-            <li>35-54: </li>
-            <li>55-74: </li>
-            <li>75+: </li>
+            <li v-for="(num,index) in male"><span>{{ age_groups[index] }}:</span>  {{num}} Suicides</li>
           </ul>
         </div>
 
         <div>
           <h4 class='center'>Female</h4>
           <ul>
-            <li>5-14: </li>
-            <li>15-24: </li>
-            <li>25-34: </li>
-            <li>35-54: </li>
-            <li>55-74: </li>
-            <li>75+: </li>
+            <li v-for="(num,index) in female"><span>{{ age_groups[index] }}:</span>  {{num}} Suicides</li>
           </ul>
         </div>
 
@@ -54,8 +39,44 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'SectionFour',
+  data() {
+    return {
+      age_groups: ['5-14 years', '15-24 years', '25-34 years', '35-54 years', '55-74 years', '75+ years'],
+      combined: [],
+      male: [],
+      female: [],
+    }
+  },
+  mounted() {
+    const path = 'http://localhost:5000/suicides_by_age_combined';
+    axios.get(path)
+      .then((res) => {
+        this.combined = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    const path2 = 'http://localhost:5000/suicides_by_age_group_male';
+    axios.get(path2)
+      .then((res) => {
+          this.male = res.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    const path3 = 'http://localhost:5000/suicides_by_age_group_female';
+    axios.get(path3)
+      .then((res) => {
+          this.female = res.data;
+      })
+      .catch((error) => {
+          console.log(error);
+      });
+  },
 };
 </script>
 
@@ -73,6 +94,10 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2em;
   border: 2px solid black;
+}
+
+span {
+  font-weight: bold;
 }
 
 

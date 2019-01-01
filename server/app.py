@@ -67,5 +67,26 @@ def route_four():
     Total = 'TEST'
     return jsonify(Total)
 
+#This route will get the number of suicides for the U.S. and by age group Combined
+@app.route('/suicides_by_age_combined', methods=['GET'])
+def route_five():
+    data = Data()
+    combined = data.suicides_by_age_group()
+    return jsonify(combined)
+
+#This route will get the number of suicides for the U.S. and by age group Combined
+@app.route('/suicides_by_age_group_male', methods=['GET'])
+def route_six():
+    data = Data()
+    combined = data.suicides_by_age_group_male()
+    return jsonify(combined)
+
+#This route will get the number of suicides for the U.S. and by age group Combined
+@app.route('/suicides_by_age_group_female', methods=['GET'])
+def route_seven():
+    data = Data()
+    combined = data.suicides_by_age_group_female()
+    return jsonify(combined)
+
 if __name__ == '__main__':
     app.run()

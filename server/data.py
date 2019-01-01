@@ -36,7 +36,7 @@ class Data():
         Total = self.data['suicides_no'].sum()
         return Total
 
-    #This method will get number of suicides by age groupself.
+    #This method will get number of suicides by age groups.
     def suicides_by_age_group(self):
         age_groups = ['5-14 years', '15-24 years', '25-34 years', '35-54 years', '55-74 years', '75+ years']
         Total_suicides = []
@@ -49,5 +49,31 @@ class Data():
             Total_suicides.append(Total)
         return Total_suicides
 
+    #This method will get number of suicides by age groups and male sex.
+    def suicides_by_age_group_male(self):
+        age_groups = ['5-14 years', '15-24 years', '25-34 years', '35-54 years', '55-74 years', '75+ years']
+        Total_suicides = []
+        for age in age_groups:
+            #I have to set the data frame equal to another data frame or else it will hold only the first
+            #age group in the data set.
+            df = self.data
+            df = df[(df.age == age) & (df.country == 'United States of America') & (df.sex == 'male')]
+            Total = df['suicides_no'].sum()
+            Total_suicides.append(Total)
+        return Total_suicides
+
+    #This method will get number of suicides by age groups and female sex.
+    def suicides_by_age_group_female(self):
+        age_groups = ['5-14 years', '15-24 years', '25-34 years', '35-54 years', '55-74 years', '75+ years']
+        Total_suicides = []
+        for age in age_groups:
+            #I have to set the data frame equal to another data frame or else it will hold only the first
+            #age group in the data set.
+            df = self.data
+            df = df[(df.age == age) & (df.country == 'United States of America') & (df.sex == 'female')]
+            Total = df['suicides_no'].sum()
+            Total_suicides.append(Total)
+        return Total_suicides
+
 # play = Data()
-# play.suicides_by_age_group()
+# play.suicides_by_age_group_male()
