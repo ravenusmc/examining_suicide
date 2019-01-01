@@ -26,10 +26,15 @@
       <div class='by_country'>
         <ByCountry></ByCountry>
       </div>
-      
+
     </section>
 
     <SectionTwo></SectionTwo>
+
+    <hr>
+
+    <SectionThree></SectionThree>
+    
 
   </div>
 </template>
@@ -38,6 +43,7 @@
 
 import ByCountry from './Calls/By_Country';
 import SectionTwo from './Calls/Section_Two';
+import SectionThree from './Calls/Section_Three';
 
 export default {
   name: 'Content',
@@ -51,6 +57,7 @@ export default {
   components: {
     ByCountry,
     SectionTwo,
+    SectionThree,
   },
 
 };
