@@ -6,6 +6,7 @@
     </header>
 
     <main class='font'>
+
       <h2 class='center font'>Number of Suicides by age</h2>
 
       <div class='age_div'>
@@ -33,6 +34,27 @@
 
       </div>
 
+
+      <h2 class='center'>Quick Summary of Age Groups</h2>
+      <div class='age_group_summary'>
+        <p>
+          I wanted to take this time to briefly talk about the above data. One thing
+          that instantly jumps out at me is that fact that in all three columns,
+          the age group with the most number of suicides is the 35-54 years group. It
+          does not matter if male or female, this is the most leathal age group to be
+          in regards to suicide.
+        </p>
+
+        <p>
+          A second factor that can really jump out at you is that the number of
+          males committing suicide is always way higher. The question would be why?
+          Could it be because of how much males are seen as the main 'bread winner'
+          in modern American society? It could also be argued that males also have
+          less of a role in society. Something that we will look at on the graph
+          page.
+        </p>
+      </div>
+
     </main>
 
   </section>
@@ -49,7 +71,7 @@ export default {
       combined: [],
       male: [],
       female: [],
-    }
+    };
   },
   mounted() {
     const path = 'http://localhost:5000/suicides_by_age_combined';
@@ -63,18 +85,18 @@ export default {
     const path2 = 'http://localhost:5000/suicides_by_age_group_male';
     axios.get(path2)
       .then((res) => {
-          this.male = res.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        this.male = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     const path3 = 'http://localhost:5000/suicides_by_age_group_female';
     axios.get(path3)
       .then((res) => {
-          this.female = res.data;
+        this.female = res.data;
       })
       .catch((error) => {
-          console.log(error);
+        console.log(error);
       });
   },
 };
@@ -94,6 +116,12 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2em;
   border: 2px solid black;
+}
+
+.age_group_summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3em;
 }
 
 span {
