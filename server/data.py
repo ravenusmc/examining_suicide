@@ -30,5 +30,11 @@ class Data():
         Total = self.data['suicides_no'].sum()
         return Total
 
+    #This method will get the suicides for country, sex and year
+    def suicides_by_country_sex_year(self, country, sex, year):
+        self.data = self.data[(self.data.country == country) & (self.data.sex == sex) & (self.data.year == year)]
+        Total = self.data['suicides_no'].sum()
+        return Total 
+
 # play = Data()
 # play.suicides_by_country_year()

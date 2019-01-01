@@ -57,10 +57,11 @@ def route_three():
 def route_four():
     data = Data()
     if request.method == 'POST':
+        print("POST")
         post_data = request.get_json()
         country = post_data.get('country')
         sex = post_data.get('sex')
-        year = post_data.get('year')
+        year = int(post_data.get('year'))
         Total = data.suicides_by_country_sex_year(country, sex, year)
         return jsonify(Total)
     Total = 'TEST'

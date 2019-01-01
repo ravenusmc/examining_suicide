@@ -54,23 +54,23 @@
       <div class='fix_alignment'>
         <form @submit="onSubmit3">
 
-          <select v-model="country" name="country">
+          <select v-model="country_4" name="country">
             <option v-for="country in countries" :value="country">{{country}}</option>
           </select>
 
           <div class='radio_sex_alignment'>
-            <input type="radio" name="gender" value="male" v-model="sex">Male <br>
-            <input type="radio" name="gender" value="female" v-model="sex"> Female<br>
+            <input type="radio" name="gender" value="male" v-model="sex_4">Male <br>
+            <input type="radio" name="gender" value="female" v-model="sex_4"> Female<br>
           </div>
 
           <input type="number"
-            v-model="year"
+            v-model="year_4"
             required
             placeholder="Enter Year"></b-form-input>
 
           <button type="submit" variant="primary">Submit</button>
 
-          <p class='font'>The number of suicides in {{ country }} is: {{ msg }}</p>
+          <p class='font'>The number of suicides in {{ country }} is: {{ msg_4 }}</p>
         </form>
       </div>
       <!-- End of suicides by country, sex and year area -->
@@ -90,6 +90,10 @@ export default {
       country: '',
       sex: '',
       year: '',
+      country_4: '',
+      year_4: '',
+      sex_4: '',
+      msg_4: '',
       countries: ['Albania', 'Anguilla', 'Antigua and Barbuda', 'Argentina', 'Armenia',
         'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain',
         'Barbados', 'Belarus', 'Belgium', 'Belize', 'Bermuda', 'Bolivia', 'Bosnia and Herzegovina',
@@ -160,17 +164,17 @@ export default {
     onSubmit3(evt) {
       evt.preventDefault();
       const payload = {
-        country: this.country,
-        sex: this.sex,
-        year: this.year,
+        country: this.country_4,
+        sex: this.sex_4,
+        year: this.year_4,
       };
-      this.getSuicideByCountrySex(payload);
+      this.getSuicideByCountrySexYear(payload);
     },
     getSuicideByCountrySexYear(payload) {
     const path = 'http://localhost:5000/suicides_by_country_sex_year';
     axios.post(path, payload)
         .then((res) => {
-          this.msg = res.data;
+          this.msg_4 = res.data;
         })
         .catch((error) => {
             console.log(error);
