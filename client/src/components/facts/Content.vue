@@ -34,7 +34,8 @@
     <hr>
 
     <SectionThree></SectionThree>
-    
+
+    <SectionFour></SectionFour>
 
   </div>
 </template>
@@ -44,6 +45,7 @@
 import ByCountry from './Calls/By_Country';
 import SectionTwo from './Calls/Section_Two';
 import SectionThree from './Calls/Section_Three';
+import SectionFour from './Calls/Section_Four';
 
 export default {
   name: 'Content',
@@ -58,6 +60,7 @@ export default {
     ByCountry,
     SectionTwo,
     SectionThree,
+    SectionFour
   },
 
 };
