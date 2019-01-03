@@ -3,8 +3,10 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import VueCharts from 'vue-charts';
 
 Vue.config.productionTip = false;
+Vue.use(VueCharts)
 
 /* eslint-disable no-new */
 new Vue({
