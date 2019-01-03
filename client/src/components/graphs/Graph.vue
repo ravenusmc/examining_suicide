@@ -19,7 +19,7 @@ export default {
                    'label': 'Year'
                }, {
                    'type': 'number',
-                   'label': 'Sale'
+                   'label': 'Suicide'
                }],
                rows: [
                    ['2004', 1000],
@@ -30,18 +30,17 @@ export default {
                options: {
                    title: 'Suicides by Year',
                    hAxis: {
-                       title: 'Year',
-                       minValue: '200',
+                       title: 'Money',
+                       minValue: '2004',
                        maxValue: '2007'
                    },
                    vAxis: {
-                       title: 'Money',
-                       minValue: 300,
+                       title: 'Year',
+                       minValue: 500,
                        maxValue: 1200
                    },
                    width: 900,
                    height: 500,
-                   curveType: 'function'
                }
            }
        },
