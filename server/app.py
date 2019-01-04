@@ -3,6 +3,7 @@ from flask_cors import CORS
 
 #Importing my files for this project
 from data import *
+from graph import *
 
 # configuration
 DEBUG = True
