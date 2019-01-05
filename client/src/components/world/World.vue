@@ -1,54 +1,31 @@
 <template>
   <div>
 
+    <header class='center'>
+      <h1 class='font title'>World Map</h1>
+    </header>
+
     <div class='data_control_div'>
-      <h1>World Map</h1>
-      <p>{{ year }}</p>
-      <button @click="increaseYear">Increase Year</button>
-      <button @click="decreaseYear">Decrease Year</button>
+      <h3 class='font'>Year: {{ year }}</h3>
+      <div class='button_div'>
+        <button @click="increaseYear">Increase Year</button>
+        <button @click="decreaseYear">Decrease Year</button>
+      </div>
     </div>
     <p>{{msg}}</p>
 
-<vue-chart
-    chart-type="GeoChart"
-    :columns="columns"
-    :rows="rows"
-    :options="options"
-></vue-chart>
-  </div>
+    <div class='map_div'>
+      <vue-chart
+          chart-type="GeoChart"
+          :columns="columns"
+          :rows="rows"
+          :options="options"></vue-chart>
+    </div>
 
+  </div>
 </template>
 <script>
 import axios from 'axios';
-
-let countries = ['Albania', 'Anguilla', 'Antigua and Barbuda|', 'Argentina', 'Armenia',
-  'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain',
-  'Barbados', 'Belarus', 'Belgium', 'Belize', 'Bermuda', 'Bolivia', 'Bosnia and Herzegovina',
-  'Brazil', 'British Virgin Islands', 'Brunei Darussalam', 'Bulgaria',
-  'Cabo Verde', 'Canada', 'Cayman Islands', 'Chile', 'Colombia', 'Costa Rica',
-  'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark','Dominica',
-  'Dominican Republic', 'Ecuador', 'Egypt','El Salvador','Estonia',
-  'Falkland Islands (Malvinas)', 'Fiji', 'Finland', 'France', 'French Guiana',
-  'Georgia', 'Germany', 'Greece', 'Grenada', 'Guadeloupe', 'Guatemala', 'Guyana',
-  'Haiti', 'Honduras', 'Hong Kong SAR', 'Hungary', 'Iceland',
-  'Iran (Islamic Rep of)', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica',
-  'Japan', 'Jordan', 'Kazakhstan', 'Kiribati', 'Kuwait', 'Kyrgyzstan', 'Latvia',
-  'Lithuania', 'Luxembourg', 'Macau', 'Malaysia', 'Maldives', 'Malta',
-  'Martinique', 'Mauritius', 'Mayotte', 'Mexico', 'Monaco', 'Mongolia',
-  'Montenegro', 'Montserrat', 'Morocco','Netherlands', 'Netherlands Antilles',
-  'New Zealand', 'Nicaragua', 'Norway', 'Occupied Palestinian Territory',
-  'Oman', 'Panama', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal',
-  'Puerto Rico', 'Qatar', 'Republic of Korea', 'Republic of Moldova', 'Reunion',
-  'Rodrigues', 'Romania', 'Russian Federation', 'Saint Kitts and Nevis',
-  'Saint Lucia', 'Saint Pierre and Miquelon', 'Saint Vincent and Grenadines',
-  'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Serbia', 'Seychelles',
-  'Singapore', 'Slovakia','Slovenia', 'South Africa', 'Spain', 'Sri Lanka',
-  'Suriname', 'Sweden', 'Switzerland', 'Syrian Arab Republic', 'TFYR Macedonia',
-  'Tajikistan', 'Thailand', 'Trinidad and Tobago', 'Tunisia', 'Turkey',
-  'Turkmenistan', 'Turks and Caicos Islands', 'Ukraine',
-  'United Arab Emirates', 'United Kingdom', 'United States of America',
-  'Uruguay', 'Uzbekistan', 'Venezuela (Bolivarian Republic of)',
-  'Virgin Islands (USA)', 'Zimbabwe']
 
 export default {
     data() {
@@ -83,16 +60,19 @@ export default {
             });
       },
       increaseYear(evt){
-        this.year++
-        evt.preventDefault();
-        const payload = {
-          year: this.year
-        };
-        console.log(payload)
-        this.getMapData(payload);
+        if (this.year > 2015){
+          alert("There is no Data past 2016")
+        }else {
+          this.year++
+          evt.preventDefault();
+          const payload = {
+            year: this.year
+          };
+          this.getMapData(payload);
+        }
       },
       decreaseYear(evt) {
-        if (this.year < 1979){
+        if (this.year < 1980){
           alert('Data cannot go less than 1979')
         }else {
           this.year--
@@ -100,25 +80,93 @@ export default {
           const payload = {
             year: this.year
           };
-          console.log(payload)
           this.getMapData(payload);
         }
       },
-    },
-    watch: {
-      year(newVal, oldVal) {
-        //console.log(newVal);
-      }
     },//End of methods
+    mounted(){
+      const path = 'http://localhost:5000/build_world_map';
+      axios.get(path)
+        .then((res) => {
+          this.rows = res.data;
+          console.log(combined)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },//End of mounted call
 }
 
 </script>
 <style>
+.center {
+  text-align: center;
+}
+
+header {
+  margin-top: 50px;
+}
+
+.font {
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+}
+
 .data_control_div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.button_div {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.map_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CSS for the button */
+button {
+	border: none;
+	background: #3a7999;
+	color: #f2f2f2;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+	transition: all 500ms ease;
+  margin-right: 20px;
+}
+
+button:before {
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	background: rgba(255,255,255,0.3);
+	border-radius: 5px;
+	transition: all 2s ease;
+}
+
+
+button:hover {
+	background: rgba(0,0,0,0);
+	color: #3a7999;
+	box-shadow: inset 0 0 0 3px #3a7999;
+}
+
+button:hover:before {
+	height: 42px;
 }
 
 </style>

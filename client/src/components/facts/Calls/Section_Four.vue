@@ -7,7 +7,7 @@
 
     <main class='font'>
 
-      <h2 class='center font'>Number of Suicides by age</h2>
+      <h2 class='center font'>Number of Suicides by Age Group</h2>
 
       <div class='age_div'>
 

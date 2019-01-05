@@ -92,11 +92,14 @@ def route_seven():
 @app.route('/build_world_map', methods=['GET', 'POST'])
 def route_eight():
     graph = Graph()
+    post_data = request.get_json()
+    year = 1979
+    suicide_data = graph.build_world_map(year)
     if request.method == 'POST':
-        post_data = request.get_json()
         year = int(post_data.get('year'))
         suicide_data = graph.build_world_map(year)
         return jsonify(suicide_data)
+    return jsonify(suicide_data)
 
 if __name__ == '__main__':
     app.run()

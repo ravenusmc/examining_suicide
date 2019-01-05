@@ -31,7 +31,7 @@
         <div class='text_div'>
           <h4 class='font center'>Why I Choose to do this Project:</h4>
           <p class='font'>For a long time now, I've been interested in suicide on a global
-            level. I've heard that its much higher in weathier countries and
+            level. I've heard that its much higher in wealthier countries and
             I wanted to explore that. Also, in the early part of December of
             2018, the Economist had an issue talking about how world wide
             suicide rates are dropping. With this project, we may be able to
