@@ -101,5 +101,12 @@ def route_eight():
         return jsonify(suicide_data)
     return jsonify(suicide_data)
 
+#This route will build total graph data
+@app.route('/build_total_suicides_graph', methods=['GET'])
+def route_nine():
+    graph = Graph()
+    suicide_data = graph.build_total_suicides()
+    return jsonify(suicide_data)
+
 if __name__ == '__main__':
     app.run()

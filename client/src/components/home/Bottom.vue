@@ -2,6 +2,7 @@
   <div class='main_div'>
     <button><router-link class='font_color' to="/fact">Quick Facts Page</router-link></button>
     <button><router-link class='font_color' to="/graph">Graph Page</router-link></button>
+    <button><router-link class='font_color' to="/world">World Map Page</router-link></button>
   </div>
 </template>
 

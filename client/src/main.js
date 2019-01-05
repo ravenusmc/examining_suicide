@@ -7,7 +7,8 @@ import VueCharts from 'vue-charts';
 import VueGoogleCharts from 'vue-google-charts'
 
 Vue.config.productionTip = false;
-//Charting libraries 
+
+//Charting libraries
 Vue.use(VueCharts)
 Vue.use(VueGoogleCharts)
 

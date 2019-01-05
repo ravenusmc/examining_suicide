@@ -24,6 +24,7 @@ class Graph():
             data = data[(data.country == country) & (data.year == year)]
             #Getting the total suicides for each country
             suicides = data['suicides_no'].sum()
+            #Changing country names to be used on the map.
             if country == 'United States of America':
                 country = 'United States'
             elif country == 'Russian Federation':
@@ -37,5 +38,30 @@ class Graph():
             suicide_data.append(single_country)
         return suicide_data
 
-# data = Graph()
-# data.build_world_map()
+    def build_total_suicides(self):
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = [['Year', 'Suicides']]
+        year_list = []
+        #getting a list of unique years
+        years = self.data.year.unique()
+        #Append each year to a list which I'll then have to sort.
+        for year in years:
+            #year = str(year)
+            year_list.append(year)
+        year_list.sort()
+        for year in year_list:
+            #This list will hold the data for a single country
+            single_country = []
+            #resetting the data for each loop
+            data = self.data
+            data = data[data.year == year]
+            suicides = data['suicides_no'].sum()
+            year = str(year)
+            single_country.append(year)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+        return suicide_data
+
+
+data = Graph()
+data.build_total_suicides()
