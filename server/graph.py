@@ -11,7 +11,7 @@ class Graph():
     def __init__(self):
         self.data = pd.read_csv('./data/who_suicide_statistics.csv')
 
-    def build_world_map(self):
+    def build_world_map(self, year):
         #This list will hold all of the country and suicide deaths for each year
         suicide_data = []
         #getting a list of unique countries
@@ -21,16 +21,13 @@ class Graph():
             data = self.data
             #This list will hold the data for a single country
             single_country = []
-            data = data[(data.country == country) & (data.year == 1979)]
+            data = data[(data.country == country) & (data.year == year)]
             #Getting the total suicides for each country
             suicides = data['suicides_no'].sum()
             single_country.append(country)
             single_country.append(suicides)
             suicide_data.append(single_country)
-            print(suicide_data)
-            input()
-        #I need to do a search for each country and year WHERE YEAR will STAY
-        #CONSTANT
+        return suicide_data
 
-data = Graph()
-data.build_world_map()
+# data = Graph()
+# data.build_world_map()

@@ -58,7 +58,6 @@ def route_three():
 def route_four():
     data = Data()
     if request.method == 'POST':
-        print("POST")
         post_data = request.get_json()
         country = post_data.get('country')
         sex = post_data.get('sex')
@@ -88,6 +87,18 @@ def route_seven():
     data = Data()
     combined = data.suicides_by_age_group_female()
     return jsonify(combined)
+
+#This route will build the world map
+@app.route('/build_world_map', methods=['GET', 'POST'])
+def route_eight():
+    graph = Graph()
+    if request.method == 'POST':
+        post_data = request.get_json()
+        year = int(post_data.get('year'))
+        suicide_data = graph.build_world_map(year)
+        return jsonify(suicide_data)
+    test = 'test'
+    return jsonify(test)
 
 if __name__ == '__main__':
     app.run()

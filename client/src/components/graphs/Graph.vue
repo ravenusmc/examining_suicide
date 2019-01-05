@@ -7,10 +7,7 @@
       <button @click="increaseYear">Increase Year</button>
       <button @click="decreaseYear">Decrease Year</button>
     </div>
-
-    <input v-model='msg'>
-    <p>{{ msg }}</p>
-    <h1>{{ msg }}</h1>
+    <p>{{msg}}</p>
 
 
     <!-- <vue-chart
@@ -29,6 +26,8 @@
 
 </template>
 <script>
+import axios from 'axios';
+
 let countries = ['Albania', 'Anguilla', 'Antigua and Barbuda|', 'Argentina', 'Armenia',
   'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain',
   'Barbados', 'Belarus', 'Belgium', 'Belize', 'Bermuda', 'Bolivia', 'Bosnia and Herzegovina',
@@ -58,15 +57,6 @@ let countries = ['Albania', 'Anguilla', 'Antigua and Barbuda|', 'Argentina', 'Ar
   'Uruguay', 'Uzbekistan', 'Venezuela (Bolivarian Republic of)',
   'Virgin Islands (USA)', 'Zimbabwe']
 
-let test = [
-    ['Saudi Arabia', 200],
-    ['United States', 300],
-    ['Brazil', 400],
-    ['Canada', 700],
-    ['France', 201],
-    ['Albania', 1000]
-]
-
 export default {
     data() {
         return {
@@ -79,7 +69,7 @@ export default {
                 'type': 'number',
                 'label': 'Suicides'
             }],
-            rows: test,
+            rows: [],
             options: {
                 title: 'Suicide by Countries',
                 width: 900,
@@ -88,13 +78,41 @@ export default {
         }
     }, //End of data object.
     methods: {
-      increaseYear() {
-        this.year++
+      getMapData(payload){
+        const path = 'http://localhost:5000/build_world_map';
+        axios.post(path, payload)
+            .then((res) => {
+              this.rows = res.data;
+            })
+            .catch((error) => {
+                console.log(error);
+                this.getMessage();
+            });
       },
-      decreaseYear() {
+      increaseYear(evt){
+        this.year++
+        evt.preventDefault();
+        const payload = {
+          year: this.year
+        };
+        console.log(payload)
+        this.getMapData(payload);
+      },
+      decreaseYear(evt) {
         this.year--
+        evt.preventDefault();
+        const payload = {
+          year: this.year
+        };
+        console.log(payload)
+        this.getMapData(payload);
+      },
+    },
+    watch: {
+      year(newVal, oldVal) {
+        //console.log(newVal);
       }
-    }
+    },//End of methods
 }
 
 
