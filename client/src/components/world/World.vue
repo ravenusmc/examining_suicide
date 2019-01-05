@@ -2,20 +2,13 @@
   <div>
 
     <div class='data_control_div'>
-      <h1>Graph Page</h1>
+      <h1>World Map</h1>
       <p>{{ year }}</p>
       <button @click="increaseYear">Increase Year</button>
       <button @click="decreaseYear">Decrease Year</button>
     </div>
     <p>{{msg}}</p>
 
-
-    <!-- <vue-chart
-    chart-type="BarChart"
-    :columns="columns"
-    :rows="rows"
-    :options="options"
-></vue-chart> -->
 <vue-chart
     chart-type="GeoChart"
     :columns="columns"
@@ -99,13 +92,17 @@ export default {
         this.getMapData(payload);
       },
       decreaseYear(evt) {
-        this.year--
-        evt.preventDefault();
-        const payload = {
-          year: this.year
-        };
-        console.log(payload)
-        this.getMapData(payload);
+        if (this.year < 1979){
+          alert('Data cannot go less than 1979')
+        }else {
+          this.year--
+          evt.preventDefault();
+          const payload = {
+            year: this.year
+          };
+          console.log(payload)
+          this.getMapData(payload);
+        }
       },
     },
     watch: {
@@ -115,43 +112,13 @@ export default {
     },//End of methods
 }
 
-
-
-// export default {
-//   name: 'Graph',
-//   data: function () {
-//            return {
-//                columns: [{
-//                    'type': 'string',
-//                    'label': 'Year'
-//                }, {
-//                    'type': 'number',
-//                    'label': 'Suicide'
-//                }],
-//                rows: [
-//                    ['2004', 1000],
-//                    ['2005', 1170],
-//                    ['2006', 660],
-//                    ['2007', 1030]
-//                ],
-//                options: {
-//                    title: 'Suicides by Year',
-//                    hAxis: {
-//                        title: 'Money',
-//                        minValue: '2004',
-//                        maxValue: '2007'
-//                    },
-//                    vAxis: {
-//                        title: 'Year',
-//                        minValue: 500,
-//                        maxValue: 1200
-//                    },
-//                    width: 900,
-//                    height: 500,
-//                }
-//            }
-//        },
-// };
 </script>
 <style>
+.data_control_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>

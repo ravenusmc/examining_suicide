@@ -17,7 +17,10 @@
               <router-link class="nav-link" to="/fact">Facts</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/graph">Graphs</router-link>
+              <router-link class="nav-link" to="/graphs">Graphs</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/world">World Map</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/about">About Me</router-link>

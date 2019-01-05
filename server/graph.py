@@ -24,6 +24,14 @@ class Graph():
             data = data[(data.country == country) & (data.year == year)]
             #Getting the total suicides for each country
             suicides = data['suicides_no'].sum()
+            if country == 'United States of America':
+                country = 'United States'
+            elif country == 'Russian Federation':
+                country = 'Russia'
+            elif country == 'Iran (Islamic Rep of)':
+                country = "Iran"
+            elif country == 'Venezuela (Bolivarian Republic of)':
+                country = 'Venezuela'
             single_country.append(country)
             single_country.append(suicides)
             suicide_data.append(single_country)

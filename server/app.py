@@ -97,8 +97,6 @@ def route_eight():
         year = int(post_data.get('year'))
         suicide_data = graph.build_world_map(year)
         return jsonify(suicide_data)
-    test = 'test'
-    return jsonify(test)
 
 if __name__ == '__main__':
     app.run()
