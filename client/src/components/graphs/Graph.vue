@@ -1,6 +1,18 @@
 <template>
   <div>
-    <h1>Graph Page</h1>
+
+    <div class='data_control_div'>
+      <h1>Graph Page</h1>
+      <p>{{ year }}</p>
+      <button @click="increaseYear">Increase Year</button>
+      <button @click="decreaseYear">Decrease Year</button>
+    </div>
+
+    <input v-model='msg'>
+    <p>{{ msg }}</p>
+    <h1>{{ msg }}</h1>
+
+
     <!-- <vue-chart
     chart-type="BarChart"
     :columns="columns"
@@ -51,12 +63,15 @@ let test = [
     ['United States', 300],
     ['Brazil', 400],
     ['Canada', 700],
-    ['France', 201]
+    ['France', 201],
+    ['Albania', 1000]
 ]
 
 export default {
-    data: function () {
+    data() {
         return {
+            msg: '',
+            year: 1979,
             columns: [{
                 'type': 'string',
                 'label': 'Country'
@@ -71,7 +86,15 @@ export default {
                 height: 500,
             }
         }
-    },
+    }, //End of data object.
+    methods: {
+      increaseYear() {
+        this.year++
+      },
+      decreaseYear() {
+        this.year--
+      }
+    }
 }
 
 
