@@ -12,12 +12,25 @@ class Graph():
         self.data = pd.read_csv('./data/who_suicide_statistics.csv')
 
     def build_world_map(self):
-        print('hhh')
-        #I have to create a master array
-        #I have to loop through the data by country.
-        #I have to get the total number of suicides by year for each country.
-        #I have to put both the country name and suicides for year into smaller array
-        #I don't have to loop through year-since the user will be controlling that on
-        #the UI side.
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = []
+        #getting a list of unique countries
+        countries = self.data.country.unique()
+        for country in countries:
+            #resetting the data for each loop
+            data = self.data
+            #This list will hold the data for a single country
+            single_country = []
+            data = data[(data.country == country) & (data.year == 1979)]
+            #Getting the total suicides for each country
+            suicides = data['suicides_no'].sum()
+            single_country.append(country)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+            print(suicide_data)
+            input()
         #I need to do a search for each country and year WHERE YEAR will STAY
         #CONSTANT
+
+data = Graph()
+data.build_world_map()
