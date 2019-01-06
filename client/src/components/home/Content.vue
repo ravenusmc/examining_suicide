@@ -67,7 +67,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .activeClass {
   transition: background-image 0.8s ease-in-out;
 }
