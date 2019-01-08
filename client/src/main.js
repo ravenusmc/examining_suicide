@@ -4,13 +4,17 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import VueCharts from 'vue-charts';
-import VueGoogleCharts from 'vue-google-charts'
+import VueGoogleCharts from 'vue-google-charts';
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css';
 
 Vue.config.productionTip = false;
 
 //Charting libraries
 Vue.use(VueCharts)
 Vue.use(VueGoogleCharts)
+
+Vue.use(VueMaterial)
 
 /* eslint-disable no-new */
 new Vue({

@@ -2,7 +2,9 @@
   <div>
 
   <header class='center'>
-    <h1 class='font'>Graph Page</h1>
+    <md-content class="md-elevation-19">
+      <h1 class='font'>Graph Page</h1>
+    </md-content>
   </header>
 
   <GraphOne></GraphOne>
@@ -10,6 +12,16 @@
   <hr>
 
   <GraphTwo></GraphTwo>
+
+  <!-- Graphs I need
+
+  1. Graph of suicides in U.S.
+  2. Graph of suicides in males - U.S.
+  3.  Graph of suicides in females -U.S
+  4. Show age group-bar chart?
+  5. Tree chart of top 5 countries
+
+  -->
 
   </div>
 </template>
@@ -43,6 +55,10 @@ export default {
 }
 
 header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 50px;
   margin-bottom: 30px;
 }

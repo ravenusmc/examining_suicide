@@ -8,8 +8,8 @@
     <div class='data_control_div'>
       <h3 class='font'>Year: {{ year }}</h3>
       <div class='button_div'>
-        <button @click="increaseYear">Increase Year</button>
-        <button @click="decreaseYear">Decrease Year</button>
+        <md-button @click="increaseYear" class="md-raised md-primary">Increase Year</md-button>
+        <md-button @click="decreaseYear" class="md-raised md-primary">Decrease Year</md-button>
       </div>
     </div>
     <p>{{msg}}</p>
@@ -96,8 +96,8 @@ export default {
         });
     },//End of mounted call
 }
-
 </script>
+
 <style scoped>
 .center {
   text-align: center;
@@ -133,7 +133,7 @@ header {
 }
 
 /* CSS for the button */
-button {
+/* button {
 	border: none;
 	background: #3a7999;
 	color: #f2f2f2;
@@ -167,6 +167,6 @@ button:hover {
 
 button:hover:before {
 	height: 42px;
-}
+} */
 
 </style>
