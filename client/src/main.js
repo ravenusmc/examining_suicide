@@ -6,7 +6,7 @@ import router from './router';
 import VueCharts from 'vue-charts';
 import VueGoogleCharts from 'vue-google-charts';
 import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/vue-material.min.css'
 
 Vue.config.productionTip = false;
 
