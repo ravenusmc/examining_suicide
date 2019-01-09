@@ -112,7 +112,7 @@ def route_nine():
 @app.route('/build_total_suicides_graph_us', methods=['GET'])
 def route_ten():
     graph = Graph()
-    suicide_data = graph.build_total_suicides()
+    suicide_data = graph.build_total_suicides_us()
     return jsonify(suicide_data)
 
 if __name__ == '__main__':

@@ -15,13 +15,8 @@
 
   <hr>
 
-  <GraphThree></GraphThree>
-
-  <hr>
-
   <!-- Graphs I need
 
-  1. Graph of suicides in U.S.
   2. Graph of suicides in males - U.S.
   3.  Graph of suicides in females -U.S
   4. Show age group-bar chart?
@@ -36,13 +31,12 @@
 import axios from 'axios';
 import GraphOne from './charts/GraphOne';
 import GraphTwo from './charts/GraphTwo';
-import GraphThree from './charts/GraphThree';
+import GraphThree from './charts/GraphTwo';
 
 export default {
   components: {
     GraphOne,
     GraphTwo,
-    GraphThree,
   },
   data () {
     return {

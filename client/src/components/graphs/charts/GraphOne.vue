@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class='first_chart'>
+      
       <md-card md-with-hover>
         <md-ripple>
           <md-card-content>
@@ -12,6 +13,7 @@
           </md-card-content>
         </md-ripple>
       </md-card>
+
       <md-card md-with-hover class='first_chart_paragraph'>
        <md-ripple>
          <md-card-header>
@@ -67,7 +69,6 @@ export default {
     const path = 'http://localhost:5000/build_total_suicides_graph';
     axios.get(path)
       .then((res) => {
-        console.log('hi')
         this.chartData = res.data;
       })
       .catch((error) => {
