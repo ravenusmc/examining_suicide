@@ -115,5 +115,12 @@ def route_ten():
     suicide_data = graph.build_total_suicides_us()
     return jsonify(suicide_data)
 
+#This route will build the graph for the U.S showing male suicides.
+@app.route('/build_total_suicides_graph_us_males', methods=['GET'])
+def route_eleven():
+    graph = Graph()
+    suicide_data = graph.build_total_suicides_graph_us_males()
+    return jsonify(suicide_data)
+
 if __name__ == '__main__':
     app.run()
