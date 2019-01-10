@@ -17,9 +17,12 @@
 
   <GraphThree></GraphThree>
 
+  <hr>
+
+  <GraphFour></GraphFour>
+
   <!-- Graphs I need
 
-  2. Graph of suicides in males - U.S.
   3.  Graph of suicides in females -U.S
   4. Show age group-bar chart?
   5. Tree chart of top 5 countries
@@ -34,12 +37,14 @@ import axios from 'axios';
 import GraphOne from './charts/GraphOne';
 import GraphTwo from './charts/GraphTwo';
 import GraphThree from './charts/GraphThree';
+import GraphFour from './charts/GraphFour';
 
 export default {
   components: {
     GraphOne,
     GraphTwo,
     GraphThree,
+    GraphFour,
   },
   data () {
     return {
