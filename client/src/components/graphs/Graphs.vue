@@ -15,6 +15,8 @@
 
   <hr>
 
+  <GraphThree></GraphThree>
+
   <!-- Graphs I need
 
   2. Graph of suicides in males - U.S.
@@ -31,12 +33,13 @@
 import axios from 'axios';
 import GraphOne from './charts/GraphOne';
 import GraphTwo from './charts/GraphTwo';
-import GraphThree from './charts/GraphTwo';
+import GraphThree from './charts/GraphThree';
 
 export default {
   components: {
     GraphOne,
     GraphTwo,
+    GraphThree,
   },
   data () {
     return {
