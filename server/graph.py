@@ -110,6 +110,30 @@ class Graph():
             suicide_data.append(single_country)
         return suicide_data
 
+    def build_total_suicides_graph_us_females(self):
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = [['Year', 'Suicides']]
+        year_list = []
+        #getting a list of unique years
+        years = self.data.year.unique()
+        #Append each year to a list which I'll then have to sort.
+        for year in years:
+            #year = str(year)
+            year_list.append(year)
+        year_list.sort()
+        for year in year_list:
+            #This list will hold the data for a single country
+            single_country = []
+            #resetting the data for each loop
+            data = self.data
+            data = data[(data.year == year) & (data.country == 'United States of America') & (data.sex == 'female')]
+            suicides = data['suicides_no'].sum()
+            year = str(year)
+            single_country.append(year)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+        return suicide_data
+
 
 data = Graph()
 data.build_total_suicides()
