@@ -134,6 +134,26 @@ class Graph():
             suicide_data.append(single_country)
         return suicide_data
 
+    def build_tree_graph(self):
+        countries = self.data.country.unique()
+        years = self.data.year.unique()
+        #This dataframe will hold all of the data
+        d = {'Country:', 'Deaths'}
+        df = pd.DataFrame(data=d)
+        for country in countries:
+            for year in years:
+                #resetting the data for each loop
+                data = self.data
+                #This list will hold the number of deaths for a single country
+                country_deaths = []
+                data = data[(data.country == country) & (data.year == year)]
+                #Getting the total suicides for each country
+                suicides = data['suicides_no'].sum()
+                print(df)
+                input()
+
+
+
 
 data = Graph()
-data.build_total_suicides()
+data.build_tree_graph()
