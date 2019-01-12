@@ -7,12 +7,14 @@ import VueCharts from 'vue-charts';
 import VueGoogleCharts from 'vue-google-charts';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
+import axios from 'axios';
 
 Vue.config.productionTip = false;
 
 //Charting libraries
 Vue.use(VueCharts)
 Vue.use(VueGoogleCharts)
+Vue.use(axios)
 
 Vue.use(VueMaterial)
 
