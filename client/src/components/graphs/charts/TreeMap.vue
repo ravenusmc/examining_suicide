@@ -3,12 +3,10 @@
 
     <div class='second_graph'>
 
-
-
       <md-card md-with-hover>
         <md-ripple>
           <md-card-content>
-            <div id="viz"></div>
+            <div class='test' id="viz"></div>
           </md-card-content>
         </md-ripple>
       </md-card>
@@ -20,6 +18,14 @@
          </md-card-header>
          <md-card-content>
           <p class='font'>
+            I don't believe it's any surprise that a majority of the countries,
+            on the tree map, are wealthier countries. I've heard how in developed
+            countries the rate of suicide is higher. What really interest me is
+            why the Ukraine is in the top 5. I believe that this should be looked
+            at closer. Could it have something to do with being part of the Soviet
+            Union and then the collapse of the Soviet Union in the late 80's and
+            early 90's that Ukraine was not able to get back on its feet with the
+            economy?
           </p>
          </md-card-content>
        </md-ripple>
@@ -32,6 +38,11 @@
 
 <script>
 import axios from 'axios';
+
+//This function will add commas to a number in javascript.
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 var data = [
   { id: "Russia", value: 1500992},
@@ -59,11 +70,13 @@ export default {
     new d3plus.Treemap()
       .select("#viz")
       .data(this.data)
-      .tooltip(true)
-      .legend(false)
       .tooltipConfig({
-        className: 'tree-tooltip',
-        title: 'Suicides',
+        body: function(d) {
+          var table = "<table class='tooltip-table'>";
+          table += "<tr><td class='title'>Suicides:</td><td class='data'>" + numberWithCommas(d.value) + "</td></tr>";
+          table += "</table>";
+          return table;
+        },
       })
       .groupBy(["id"])
       .sum("value")
@@ -78,8 +91,12 @@ export default {
   width: 500px;
 }
 
-.tree-tooltip {
+.tooltip-table {
   z-index: 1000;
+}
+
+.test {
+  z-index: 1;
 }
 
 .font {

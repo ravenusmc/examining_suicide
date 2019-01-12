@@ -134,6 +134,8 @@ class Graph():
             suicide_data.append(single_country)
         return suicide_data
 
+    #This method will get the data to build the tree map. It will not be called
+    #by axios in the program.
     def build_tree_graph(self):
         countries = self.data.country.unique()
         #This list will hold all of the data to build a data frame
@@ -149,39 +151,61 @@ class Graph():
         df = pd.DataFrame(d)
         #sorting the dataframe
         df = df.nlargest(5, 'Suicides')
+        #print(df)
+
+    #This method will build the first age graph
+    def build_first_age_graph(self):
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = [['Year', 'Suicides']]
+        year_list = []
+        #getting a list of unique years
+        years = self.data.year.unique()
+        #Append each year to a list which I'll then have to sort.
+        for year in years:
+            year_list.append(year)
+        year_list.sort()
+        for year in year_list:
+            #This list will hold the data for a single country
+            single_country = []
+            #resetting the data for each loop
+            data = self.data
+            data = data[(data.year == year) & (data.country == 'United States of America')
+            & (data.age == '5-14 years')]
+            suicides = data['suicides_no'].sum()
+            year = str(year)
+            single_country.append(year)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+        return suicide_data
+
+    #This method will build the first age graph
+    def build_second_age_graph(self):
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = [['Year', 'Suicides']]
+        year_list = []
+        #getting a list of unique years
+        years = self.data.year.unique()
+        #Append each year to a list which I'll then have to sort.
+        for year in years:
+            year_list.append(year)
+        year_list.sort()
+        for year in year_list:
+            #This list will hold the data for a single country
+            single_country = []
+            #resetting the data for each loop
+            data = self.data
+            data = data[(data.year == year) & (data.country == 'United States of America')
+            & (data.age == '15-24 years')]
+            suicides = data['suicides_no'].sum()
+            year = str(year)
+            single_country.append(year)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+        return suicide_data
 
 
-
-        #This list will hold all of the data to build a data frame
-        # d = []
-        # df = pd.DataFrame(data=d)
-        # for country in countries:
-        #     for year in years:
-                #resetting the data for each loop
-                # data = self.data
-                #This list will hold the number of deaths for a single country
-                # country_deaths = []
-                # data = data[(data.country == country) & (data.year == year)]
-                #Getting the total suicides for each country
-                # suicides = data['suicides_no'].sum()
-                # country_deaths.append(suicides)
-                # max(country_deaths)
-
-            # print(country_deaths)
-            # print(country)
-            # input()
-                # d.append({'Country': country, 'Suicides': suicides})
-                # print(d)
-                # input()
-        # df = pd.DataFrame(d)
-        # print(df)
-
-
-
-
-
-data = Graph()
-data.build_tree_graph()
+# data = Graph()
+# data.build_first_age_graph()
 
 
 
