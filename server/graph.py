@@ -136,27 +136,35 @@ class Graph():
 
     def build_tree_graph(self):
         countries = self.data.country.unique()
-        years = self.data.year.unique().tolist()
-        # years = years.sort(key=int)
-        years = sorted(years)
-        print(years)
-        input()
-        #This dataframe will hold all of the data
+        #This list will hold all of the data to build a data frame
         d = []
-        df = pd.DataFrame(data=d)
+        #building a new dataframe to get the sum of all the countries suicides.
         for country in countries:
-            print(country)
-            for year in years:
-                print(year)
-                input()
+            #resetting the data for each loop
+            data = self.data
+            data = data[(data.country == country)]
+            suicides = data['suicides_no'].sum()
+            d.append({'Country': country, 'Suicides': suicides})
+        #creating the dataframe
+        df = pd.DataFrame(d)
+        #sorting the dataframe
+        df = df.nlargest(5, 'Suicides')
+
+
+
+        #This list will hold all of the data to build a data frame
+        # d = []
+        # df = pd.DataFrame(data=d)
+        # for country in countries:
+        #     for year in years:
                 #resetting the data for each loop
-                data = self.data
+                # data = self.data
                 #This list will hold the number of deaths for a single country
-                country_deaths = []
-                data = data[(data.country == country) & (data.year == year)]
+                # country_deaths = []
+                # data = data[(data.country == country) & (data.year == year)]
                 #Getting the total suicides for each country
-                suicides = data['suicides_no'].sum()
-                country_deaths.append(suicides)
+                # suicides = data['suicides_no'].sum()
+                # country_deaths.append(suicides)
                 # max(country_deaths)
 
             # print(country_deaths)
@@ -165,8 +173,8 @@ class Graph():
                 # d.append({'Country': country, 'Suicides': suicides})
                 # print(d)
                 # input()
-        df = pd.DataFrame(d)
-        print(df)
+        # df = pd.DataFrame(d)
+        # print(df)
 
 
 

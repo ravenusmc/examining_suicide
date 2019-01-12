@@ -25,6 +25,8 @@
 
   <h2 class='center'>Graph's of Suicides By Age Group (U.S.)</h2>
 
+  <TreeMap></TreeMap>
+
   <!-- Graphs I need
 
   4. Show age group-bar chart?
@@ -41,6 +43,7 @@ import GraphOne from './charts/GraphOne';
 import GraphTwo from './charts/GraphTwo';
 import GraphThree from './charts/GraphThree';
 import GraphFour from './charts/GraphFour';
+import TreeMap from './charts/TreeMap';
 
 export default {
   components: {
@@ -48,6 +51,7 @@ export default {
     GraphTwo,
     GraphThree,
     GraphFour,
+    TreeMap
   },
   data () {
     return {
