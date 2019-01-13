@@ -9,29 +9,28 @@
 
   <GraphOne></GraphOne>
 
-  <hr>
-
   <GraphTwo></GraphTwo>
 
-  <hr>
-
-  <GraphThree></GraphThree>
-
-  <hr>
-
-  <GraphFour></GraphFour>
+  <div class='graph_alignment'>
+    <GraphThree></GraphThree>
+    <GraphFour></GraphFour>
+  </div>
 
   <hr>
 
   <h2 class='center'>Graph's of Suicides By Age Group (U.S.)</h2>
 
+  <div class='age_group_graphs'>
+
     <form @submit="onSubmit">
       <select v-model="age" name="age">
         <option v-for="age in age_group" :value="age">{{age}}</option>
       </select>
-      <button type="submit" variant="primary">Submit</button>
+      <md-button type="submit" class="md-raised md-primary">Change Graph</md-button>
     </form>
     <component :is="component"></component>
+    
+  </div>
 
   <hr>
 
@@ -39,16 +38,12 @@
 
   <TreeMap></TreeMap>
 
-  <!-- Graphs I need
-  4. Show age group-bar chart?
-  -->
-
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-//Importing components 
+//Importing components
 import GraphOne from './charts/GraphOne';
 import GraphTwo from './charts/GraphTwo';
 import GraphThree from './charts/GraphThree';
@@ -117,6 +112,29 @@ header {
   align-items: center;
   margin-top: 50px;
   margin-bottom: 30px;
+}
+
+.graph_alignment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.age_group_graphs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CSS for the form */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>

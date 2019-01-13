@@ -1,8 +1,5 @@
 <template>
   <div>
-
-    <div class='second_graph'>
-
       <md-card md-with-hover>
         <md-ripple>
           <md-card-content>
@@ -14,9 +11,6 @@
           </md-card-content>
         </md-ripple>
       </md-card>
-
-    </div>
-
   </div>
 </template>
 
@@ -65,13 +59,5 @@ export default {
 
 .center {
   text-align: center;
-}
-
-.second_graph {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1em;
-  margin-left: 5%;
-  margin-right: 5%;
 }
 </style>
