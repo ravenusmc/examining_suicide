@@ -129,7 +129,19 @@ def route_twelve():
     suicide_data = graph.build_total_suicides_graph_us_females()
     return jsonify(suicide_data)
 
-#This route will build the first age group graph
+#This route will build the age graphs
+# @app.route('/build_age_graph', methods=['GET', 'POST'])
+# def ageGraphs():
+#     graph = Graph()
+#     if request.method == 'POST':
+#         post_data = request.get_json()
+#         age_group = post_data.get('age')
+#         if age_group == '15-24 years':
+#             suicide_data = graph.build_second_age_graph()
+#         return jsonify(suicide_data)
+
+
+### The below routes will get all the data to build the age graphs
 @app.route('/build_first_age_graph', methods=['GET'])
 def route_thirteen():
     graph = Graph()
@@ -140,6 +152,30 @@ def route_thirteen():
 def route_fourteen():
     graph = Graph()
     suicide_data = graph.build_second_age_graph()
+    return jsonify(suicide_data)
+
+@app.route('/build_third_age_graph', methods=['GET'])
+def route_fifteen():
+    graph = Graph()
+    suicide_data = graph.build_third_age_graph()
+    return jsonify(suicide_data)
+
+@app.route('/build_fourth_age_graph', methods=['GET'])
+def route_sixteen():
+    graph = Graph()
+    suicide_data = graph.build_fourth_age_graph()
+    return jsonify(suicide_data)
+
+@app.route('/build_fifth_age_graph', methods=['GET'])
+def route_seventeen():
+    graph = Graph()
+    suicide_data = graph.build_fifth_age_graph()
+    return jsonify(suicide_data)
+
+@app.route('/build_sixth_age_graph', methods=['GET'])
+def route_eightteen():
+    graph = Graph()
+    suicide_data = graph.build_sixth_age_graph()
     return jsonify(suicide_data)
 
 

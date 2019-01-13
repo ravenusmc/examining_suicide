@@ -29,7 +29,7 @@
       <md-button type="submit" class="md-raised md-primary">Change Graph</md-button>
     </form>
     <component :is="component"></component>
-    
+
   </div>
 
   <hr>
@@ -51,6 +51,10 @@ import GraphFour from './charts/GraphFour';
 import TreeMap from './charts/TreeMap';
 import First from './ageGraphs/First';
 import Second from './ageGraphs/Second';
+import Third from './ageGraphs/Third';
+import Fourth from './ageGraphs/Fourth';
+import Fifth from './ageGraphs/Fifth';
+import Sixth from './ageGraphs/Sixth';
 
 export default {
   components: {
@@ -61,6 +65,10 @@ export default {
     TreeMap,
     First,
     Second,
+    Third,
+    Fourth,
+    Fifth,
+    Sixth,
   },
   data () {
     return {
@@ -76,21 +84,33 @@ export default {
       const payload = {
         age: this.age
       };
+      console.log(payload)
+      // this.getGraph(payload)
       if (this.age == '5-14 years'){
         this.component = 'First'
       }else if (this.age == '15-24 years'){
         this.component = 'Second'
       }else if (this.age == '25-34 years'){
-        this.component = 'Second'
+        this.component = 'Third'
       }else if (this.age == '35-54 years'){
-        this.component = 'Second'
+        this.component = 'Fourth'
       }else if (this.age == '55-74 years'){
-        this.component = 'Second'
+        this.component = 'Fifth'
       }else if (this.age == '75+ years'){
-        this.component = 'Second'
+        this.component = 'Sixth'
       }
     },
-  },
+    getGraph(payload){
+      const path = 'http://localhost:5000/build_age_graph';
+      axios.post(path, payload)
+        .then((res) => {
+          this.rows = res.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    },
+  }, //End of methods
 }
 
 

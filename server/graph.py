@@ -203,6 +203,103 @@ class Graph():
             suicide_data.append(single_country)
         return suicide_data
 
+    def build_third_age_graph(self):
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = [['Year', 'Suicides']]
+        year_list = []
+        #getting a list of unique years
+        years = self.data.year.unique()
+        #Append each year to a list which I'll then have to sort.
+        for year in years:
+            year_list.append(year)
+        year_list.sort()
+        for year in year_list:
+            #This list will hold the data for a single country
+            single_country = []
+            #resetting the data for each loop
+            data = self.data
+            data = data[(data.year == year) & (data.country == 'United States of America')
+            & (data.age == '25-34 years')]
+            suicides = data['suicides_no'].sum()
+            year = str(year)
+            single_country.append(year)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+        return suicide_data
+
+    def build_fourth_age_graph(self):
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = [['Year', 'Suicides']]
+        year_list = []
+        #getting a list of unique years
+        years = self.data.year.unique()
+        #Append each year to a list which I'll then have to sort.
+        for year in years:
+            year_list.append(year)
+        year_list.sort()
+        for year in year_list:
+            #This list will hold the data for a single country
+            single_country = []
+            #resetting the data for each loop
+            data = self.data
+            data = data[(data.year == year) & (data.country == 'United States of America')
+            & (data.age == '35-54 years')]
+            suicides = data['suicides_no'].sum()
+            year = str(year)
+            single_country.append(year)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+        return suicide_data
+
+    def build_fifth_age_graph(self):
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = [['Year', 'Suicides']]
+        year_list = []
+        #getting a list of unique years
+        years = self.data.year.unique()
+        #Append each year to a list which I'll then have to sort.
+        for year in years:
+            year_list.append(year)
+        year_list.sort()
+        for year in year_list:
+            #This list will hold the data for a single country
+            single_country = []
+            #resetting the data for each loop
+            data = self.data
+            data = data[(data.year == year) & (data.country == 'United States of America')
+            & (data.age == '55-74 years')]
+            suicides = data['suicides_no'].sum()
+            year = str(year)
+            single_country.append(year)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+        return suicide_data
+
+    def build_sixth_age_graph(self):
+        #This list will hold all of the country and suicide deaths for each year
+        suicide_data = [['Year', 'Suicides']]
+        year_list = []
+        #getting a list of unique years
+        years = self.data.year.unique()
+        #Append each year to a list which I'll then have to sort.
+        for year in years:
+            year_list.append(year)
+        year_list.sort()
+        for year in year_list:
+            #This list will hold the data for a single country
+            single_country = []
+            #resetting the data for each loop
+            data = self.data
+            data = data[(data.year == year) & (data.country == 'United States of America')
+            & (data.age == '75+ years')]
+            suicides = data['suicides_no'].sum()
+            year = str(year)
+            single_country.append(year)
+            single_country.append(suicides)
+            suicide_data.append(single_country)
+        return suicide_data
+
+
 
 # data = Graph()
 # data.build_first_age_graph()
