@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class='first_chart'>
-      
+
       <md-card md-with-hover>
         <md-ripple>
           <md-card-content>
@@ -15,7 +15,7 @@
       </md-card>
 
       <md-card md-with-hover class='first_chart_paragraph'>
-       <md-ripple>
+        <md-ripple class='briefing_alingment_fix'>
          <md-card-header>
            <div class="md-title font center">Brief Summary</div>
          </md-card-header>
@@ -107,7 +107,12 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 30px;
 }
 
+.briefing_alingment_fix {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>

@@ -31,7 +31,7 @@
       <div class='fix_alignment'>
         <form @submit="onSubmit2">
 
-          <select v-model="country" name="country">
+          <select v-model="country_2" name="country">
             <option v-for="country in countries" :value="country">{{country}}</option>
           </select>
 
@@ -42,7 +42,7 @@
 
           <button type="submit" variant="primary">Submit</button>
 
-          <p class='font'>The number of suicides in {{ country }} is: {{ msg }}</p>
+          <p class='font'>The number of suicides in {{ country }} is: {{ msg2 }}</p>
         </form>
       </div>
       <!-- End of suicides by country and sex area -->
@@ -90,6 +90,8 @@ export default {
       country: '',
       sex: '',
       year: '',
+      country_2: '',
+      msg2: '',
       country_4: '',
       year_4: '',
       sex_4: '',
@@ -146,7 +148,7 @@ export default {
     onSubmit2(evt) {
       evt.preventDefault();
       const payload = {
-        country: this.country,
+        country: this.country_2,
         sex: this.sex
       };
       this.getSuicideByCountrySex(payload);
@@ -155,7 +157,7 @@ export default {
     const path = 'http://localhost:5000/suicides_by_country_sex';
     axios.post(path, payload)
         .then((res) => {
-          this.msg = res.data;
+          this.msg2 = res.data;
         })
         .catch((error) => {
             console.log(error);

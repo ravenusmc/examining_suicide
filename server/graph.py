@@ -54,12 +54,13 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[data.year == year]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[data.year == year]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     def build_total_suicides_us(self):
@@ -78,12 +79,13 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     def build_total_suicides_graph_us_males(self):
@@ -102,12 +104,13 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America') & (data.sex == 'male')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America') & (data.sex == 'male')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     def build_total_suicides_graph_us_females(self):
@@ -126,12 +129,13 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America') & (data.sex == 'female')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America') & (data.sex == 'female')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     #This method will get the data to build the tree map. It will not be called
@@ -169,13 +173,14 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America')
-            & (data.age == '5-14 years')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America')
+                & (data.age == '5-14 years')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     #This method will build the first age graph
@@ -194,13 +199,14 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America')
-            & (data.age == '15-24 years')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America')
+                & (data.age == '15-24 years')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     def build_third_age_graph(self):
@@ -218,13 +224,14 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America')
-            & (data.age == '25-34 years')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America')
+                & (data.age == '25-34 years')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     def build_fourth_age_graph(self):
@@ -242,13 +249,14 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America')
-            & (data.age == '35-54 years')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America')
+                & (data.age == '35-54 years')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     def build_fifth_age_graph(self):
@@ -266,13 +274,14 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America')
-            & (data.age == '55-74 years')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America')
+                & (data.age == '55-74 years')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
     def build_sixth_age_graph(self):
@@ -290,13 +299,14 @@ class Graph():
             single_country = []
             #resetting the data for each loop
             data = self.data
-            data = data[(data.year == year) & (data.country == 'United States of America')
-            & (data.age == '75+ years')]
-            suicides = data['suicides_no'].sum()
-            year = str(year)
-            single_country.append(year)
-            single_country.append(suicides)
-            suicide_data.append(single_country)
+            if year != 2016:
+                data = data[(data.year == year) & (data.country == 'United States of America')
+                & (data.age == '75+ years')]
+                suicides = data['suicides_no'].sum()
+                year = str(year)
+                single_country.append(year)
+                single_country.append(suicides)
+                suicide_data.append(single_country)
         return suicide_data
 
 

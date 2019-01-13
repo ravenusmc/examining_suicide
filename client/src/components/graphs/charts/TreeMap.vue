@@ -5,7 +5,7 @@
 
       <md-card md-with-hover>
         <md-ripple>
-          <md-card-content>
+          <md-card-content class='test'>
             <div class='test' id="viz"></div>
           </md-card-content>
         </md-ripple>
@@ -92,12 +92,12 @@ export default {
 }
 
 .tooltip-table {
-  z-index: 1000;
+  z-index: 100 !important;
 }
 
-.test {
-  z-index: 1;
-}
+/* .test {
+  z-index: -10;
+} */
 
 .font {
   font-family: 'Thasadith', sans-serif;
