@@ -12,6 +12,7 @@ class Graph():
         self.data = pd.read_csv('./data/who_suicide_statistics.csv')
 
     def build_world_map(self, year):
+        # print(self.data.dtypes)
         #This list will hold all of the country and suicide deaths for each year
         suicide_data = []
         #getting a list of unique countries
@@ -312,7 +313,7 @@ class Graph():
 
 
 # data = Graph()
-# data.build_first_age_graph()
+# data.build_world_map(1980)
 
 
 

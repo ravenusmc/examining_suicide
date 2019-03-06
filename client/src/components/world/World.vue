@@ -53,6 +53,8 @@ export default {
         axios.post(path, payload)
             .then((res) => {
               this.rows = res.data;
+              console.log(res)
+              console.log(typeof this.rows)
             })
             .catch((error) => {
                 console.log(error);
